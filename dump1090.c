@@ -2253,8 +2253,8 @@ int handleHTTPRequest(struct client *c) {
         struct stat sbuf;
         int fd = -1;
 
-        if (stat("gmap.html",&sbuf) != -1 &&
-            (fd = open("gmap.html",O_RDONLY)) != -1)
+        if (stat("/config/dump1090/gmap.html",&sbuf) != -1 &&
+            (fd = open("/config/dump1090/gmap.html",O_RDONLY)) != -1)
         {
             content = malloc(sbuf.st_size);
             if (read(fd,content,sbuf.st_size) == -1) {
