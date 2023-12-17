@@ -46,6 +46,8 @@
 #include "rtl-sdr.h"
 #include "anet.h"
 
+#define GMAP_HTML	"/config/dump1090/gmap.html"
+
 #define MODES_DEFAULT_RATE         2000000
 #define MODES_DEFAULT_FREQ         1090000000
 #define MODES_DEFAULT_WIDTH        1000
@@ -2253,8 +2255,8 @@ int handleHTTPRequest(struct client *c) {
         struct stat sbuf;
         int fd = -1;
 
-        if (stat("/config/dump1090/gmap.html",&sbuf) != -1 &&
-            (fd = open("/config/dump1090/gmap.html",O_RDONLY)) != -1)
+        if (stat(GMAP_HTML,&sbuf) != -1 &&
+            (fd = open(GMAP_HTML,O_RDONLY)) != -1)
         {
             content = malloc(sbuf.st_size);
             if (read(fd,content,sbuf.st_size) == -1) {
